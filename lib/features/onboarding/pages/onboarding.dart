@@ -24,6 +24,7 @@ class _OnboardingState extends State<Onboarding> {
     pageController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,44 +33,55 @@ class _OnboardingState extends State<Onboarding> {
           PageView(
             physics: const AlwaysScrollableScrollPhysics(),
             controller: pageController,
-            children: const [
-              PageOne(),
-              PageTwo()
-            ],
+            children: const [PageOne(), PageTwo()],
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Padding(padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        pageController.nextPage(duration: const Duration(microseconds: 600), curve: Curves.ease)
-                      },
-                      child: const Icon(Ionicons.chevron_forward_circle, size: 30, color: AppConst.kLight,),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          pageController.nextPage(
+                              duration: const Duration(microseconds: 600),
+                              curve: Curves.ease);
+                        },
+                        child: const Icon(
+                          Ionicons.chevron_forward_circle,
+                          size: 30,
+                          color: AppConst.kLight,
+                        ),
+                      ),
+                      const WidthSpacer(h: 5),
+                      ReusableText(
+                          text: "Skip",
+                          style:
+                              appStyle(16, AppConst.kLight, FontWeight.w500)),
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      pageController.nextPage(
+                          duration: const Duration(microseconds: 600),
+                          curve: Curves.ease);
+                    },
+                    child: SmoothPageIndicator(
+                      controller: pageController,
+                      count: 2,
+                      effect: const WormEffect(
+                          dotHeight: 12,
+                          dotWidth: 16,
+                          spacing: 10,
+                          dotColor: AppConst.kYellow),
                     ),
-                    const WidthSpacer(h: 5),
-                    ReusableText(text: "Skip", style: appStyle(16, AppConst.kLight, FontWeight.w500)),
-                  ],
-                ),
-                GestureDetector(
-                  onTap: (){
-                        pageController.nextPage(duration: const Duration(microseconds: 600), curve: Curves.ease)
-                      },
-                  child: SmoothPageIndicator(controller: pageController, count: 2,
-                  effect: const WormEffect(
-                    dotHeight: 12,
-                    dotWidth: 16,
-                    spacing: 10,
-                    dotColor: AppConst.kYellow
-                  ),),
-                )
-
-              ],
-            ),),
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),
