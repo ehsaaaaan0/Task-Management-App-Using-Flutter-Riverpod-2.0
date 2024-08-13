@@ -10,6 +10,8 @@ import 'package:task_management/common/widgets/height_spacer.dart';
 import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:task_management/common/widgets/width_spacer.dart';
 
+import 'otp_page.dart';
+
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
@@ -94,7 +96,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               child: CustomOutlineBtn(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OtpPage()));
+                      MaterialPageRoute(builder: (context) => const OtpPage()));
+                      
                 },
                 height: AppConst.kHeight * 0.07,
                 width: AppConst.kWidth * 0.9,

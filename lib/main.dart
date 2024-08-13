@@ -15,21 +15,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      useInheritedMediaQuery: true,
-      designSize: const Size(375, 825),
-      minTextAdapt: true,
-      builder: (context, child) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            scaffoldBackgroundColor: AppConst.kBkDark,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          themeMode: ThemeMode.dark,
-          home: const Onboarding(),
-        );
-      }
-    );
+        useInheritedMediaQuery: true,
+        designSize: const Size(375, 825),
+        minTextAdapt: true,
+        builder: (context, child) {
+          return MaterialApp(
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              scaffoldBackgroundColor: AppConst.kBkDark,
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            themeMode: ThemeMode.dark,
+            home: const Homepage(),
+          );
+        });
   }
 }
