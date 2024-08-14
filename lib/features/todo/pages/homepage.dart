@@ -9,6 +9,7 @@ import 'package:task_management/common/widgets/height_spacer.dart';
 import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:task_management/common/widgets/width_spacer.dart';
 import 'package:task_management/common/widgets/xpansion_tiles.dart';
+import 'package:task_management/features/todo/widgets/todo_tiles.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
@@ -160,6 +161,18 @@ class _HomepageState extends ConsumerState<Homepage>
                       Container(
                         color: AppConst.kBkLight,
                         height: AppConst.kHeight * 0.3,
+
+                        child: ListView(
+                          children: [
+                            TODOTile(
+                              start: "03:00",
+                              end: "04:00",
+                              switcher: Switch(value: true, onChanged: (value){
+
+                              }),
+                            )
+                          ],
+                        ),
                       ),
                       Container(
                         color: AppConst.kBkLight,
