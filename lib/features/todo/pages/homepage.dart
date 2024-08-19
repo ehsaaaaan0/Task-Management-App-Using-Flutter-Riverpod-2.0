@@ -9,6 +9,7 @@ import 'package:task_management/common/widgets/height_spacer.dart';
 import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:task_management/common/widgets/width_spacer.dart';
 import 'package:task_management/common/widgets/xpansion_tiles.dart';
+import 'package:task_management/features/todo/controllers/xpension_provider.dart';
 import 'package:task_management/features/todo/widgets/todo_tiles.dart';
 
 class Homepage extends ConsumerStatefulWidget {
@@ -161,15 +162,13 @@ class _HomepageState extends ConsumerState<Homepage>
                       Container(
                         color: AppConst.kBkLight,
                         height: AppConst.kHeight * 0.3,
-
                         child: ListView(
                           children: [
                             TODOTile(
                               start: "03:00",
                               end: "04:00",
-                              switcher: Switch(value: true, onChanged: (value){
-
-                              }),
+                              switcher:
+                                  Switch(value: true, onChanged: (value) {}),
                             )
                           ],
                         ),
@@ -182,10 +181,33 @@ class _HomepageState extends ConsumerState<Homepage>
                   ),
                 ),
                 const HeightSpacer(hight: 20),
-                const XPensionTiles(
+                XPensionTiles(
                     text: "Tomorrow's Task",
                     text2: "Tomorrow's tasks are shown here",
-                    children: []),
+                    onExpansionChanged: (bool expanded) {
+                      ref
+                          .read(xpensionStateProvider.notifier)
+                          .setStart(!expanded);
+                    },
+                    trailing: Padding(
+                      padding: EdgeInsets.only(right: 12.w),
+                      child: ref.watch(xpensionStateProvider)
+                          ? Icon(
+                              AntDesign.circledown,
+                              color: AppConst.kLight,
+                            )
+                          : Icon(
+                              AntDesign.closecircleo,
+                              color: AppConst.kBlueLight,
+                            ),
+                    ),
+                    children: [
+                      TODOTile(
+                        start: "03:00",
+                        end: "04:00",
+                        switcher: Switch(value: true, onChanged: (value) {}),
+                      )
+                    ]),
                 const HeightSpacer(hight: 20),
                 XPensionTiles(
                     text: DateTime.now()
@@ -193,7 +215,31 @@ class _HomepageState extends ConsumerState<Homepage>
                         .toString()
                         .substring(5, 10),
                     text2: "Tomorrow's tasks are shown here",
-                    children: []),
+                    onExpansionChanged: (bool expanded) {
+                      ref
+                          .read(xpensionState0Provider.notifier)
+                          .setStart(!expanded);
+                    },
+                    trailing: Padding(
+                      padding: EdgeInsets.only(right: 12.w),
+                      child: ref.watch(xpensionState0Provider)
+                          ? Icon(
+                              AntDesign.circledown,
+                              color: AppConst.kLight,
+                            )
+                          : Icon(
+                              AntDesign.closecircleo,
+                              color: AppConst.kBlueLight,
+                            ),
+                    ),
+                    children: [
+                       TODOTile(
+                              start: "03:00",
+                              end: "04:00",
+                              switcher:
+                                  Switch(value: true, onChanged: (value) {}),
+                            )
+                    ]),
               ],
             ),
           ),
