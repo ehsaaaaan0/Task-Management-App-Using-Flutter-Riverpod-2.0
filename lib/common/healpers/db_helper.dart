@@ -66,15 +66,16 @@ class DbHelper {
       'startTime': startTime,
       'endTime': endTime
     };
-    final results = await db.update("todos", data, where: "id ?", whereArgs: [id]);
+    final results =
+        await db.update("todos", data, where: "id ?", whereArgs: [id]);
     return results;
   }
 
-  static Future<void> deleteItem(int id) async{
+  static Future<void> deleteItem(int id) async {
     final db = await DbHelper.db();
-    try{
-db.delete("todos", where: 'id = ?', whereArgs: [id])
-    }catch(e){
+    try {
+      db.delete("todos", where: 'id = ?', whereArgs: [id]);
+    } catch (e) {
       debugPrint(e.toString());
     }
   }
