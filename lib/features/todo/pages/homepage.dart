@@ -10,6 +10,7 @@ import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:task_management/common/widgets/width_spacer.dart';
 import 'package:task_management/common/widgets/xpansion_tiles.dart';
 import 'package:task_management/features/todo/controllers/xpension_provider.dart';
+import 'package:task_management/features/todo/pages/add.dart';
 import 'package:task_management/features/todo/widgets/todo_tiles.dart';
 
 class Homepage extends ConsumerStatefulWidget {
@@ -53,7 +54,12 @@ class _HomepageState extends ConsumerState<Homepage>
                           borderRadius: BorderRadius.all(Radius.circular(9)),
                         ),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AddTask()));
+                          },
                           child: const Icon(
                             Icons.add,
                             color: AppConst.kBkDark,
@@ -192,11 +198,11 @@ class _HomepageState extends ConsumerState<Homepage>
                     trailing: Padding(
                       padding: EdgeInsets.only(right: 12.w),
                       child: ref.watch(xpensionStateProvider)
-                          ? Icon(
+                          ? const Icon(
                               AntDesign.circledown,
                               color: AppConst.kLight,
                             )
-                          : Icon(
+                          : const Icon(
                               AntDesign.closecircleo,
                               color: AppConst.kBlueLight,
                             ),
@@ -233,12 +239,11 @@ class _HomepageState extends ConsumerState<Homepage>
                             ),
                     ),
                     children: [
-                       TODOTile(
-                              start: "03:00",
-                              end: "04:00",
-                              switcher:
-                                  Switch(value: true, onChanged: (value) {}),
-                            )
+                      TODOTile(
+                        start: "03:00",
+                        end: "04:00",
+                        switcher: Switch(value: true, onChanged: (value) {}),
+                      )
                     ]),
               ],
             ),
