@@ -223,11 +223,11 @@ class _HomepageState extends ConsumerState<Homepage>
                     trailing: Padding(
                       padding: EdgeInsets.only(right: 12.w),
                       child: ref.watch(xpensionState0Provider)
-                          ? Icon(
+                          ? const Icon(
                               AntDesign.circledown,
                               color: AppConst.kLight,
                             )
-                          : Icon(
+                          : const Icon(
                               AntDesign.closecircleo,
                               color: AppConst.kBlueLight,
                             ),
