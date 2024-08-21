@@ -5,11 +5,35 @@ part 'dates_provider.g.dart';
 @riverpod
 class DateState extends _$DateState {
   @override
-  bool build() {
-    return false;
+  String build() {
+    return "";
   }
 
-  void setStart(bool newState) {
+  void setDate(String newState) {
+    state = newState;
+  }
+}
+
+@riverpod
+class StartTimeState extends _$StartTimeState {
+  @override
+  String build() {
+    return "";
+  }
+
+  void setStart(String newState) {
+    state = newState;
+  }
+}
+
+@riverpod
+class FinishTimeState extends _$FinishTimeState {
+  @override
+  String build() {
+    return "";
+  }
+
+  void setEnd(String newState) {
     state = newState;
   }
 }
