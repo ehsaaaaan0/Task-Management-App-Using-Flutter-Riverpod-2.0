@@ -16,9 +16,8 @@ class MyApp extends StatelessWidget {
   static final defaultLightColorScheme =
       ColorScheme.fromSwatch(primarySwatch: Colors.blue);
 
-
-  static final defaultDarkColorScheme =
-      ColorScheme.fromSwatch(primarySwatch: Colors.blue, brightness: Brightness.dark);
+  static final defaultDarkColorScheme = ColorScheme.fromSwatch(
+      primarySwatch: Colors.blue, brightness: Brightness.dark);
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +32,13 @@ class MyApp extends StatelessWidget {
               title: 'Flutter Demo',
               theme: ThemeData(
                 scaffoldBackgroundColor: AppConst.kBkDark,
-                colorScheme: lightColorScheme?? defaultLightColorScheme,
+                colorScheme: lightColorScheme ?? defaultLightColorScheme,
                 useMaterial3: true,
               ),
-              darkTheme: ThemeData(colorScheme: darkColorScheme??defaultDarkColorScheme,
-              scaffoldBackgroundColor: AppConst.kBkDark,
-              useMaterial3: true),
+              darkTheme: ThemeData(
+                  colorScheme: darkColorScheme ?? defaultDarkColorScheme,
+                  scaffoldBackgroundColor: AppConst.kBkDark,
+                  useMaterial3: true),
               themeMode: ThemeMode.dark,
               home: const Homepage(),
             );

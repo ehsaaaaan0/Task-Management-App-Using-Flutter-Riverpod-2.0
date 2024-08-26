@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:task_management/common/models/task_model.dart';
 import 'package:task_management/common/utils/constants.dart';
 import 'package:task_management/common/widgets/appstyle.dart';
 import 'package:task_management/common/widgets/custom_text.dart';
@@ -9,9 +10,12 @@ import 'package:task_management/common/widgets/height_spacer.dart';
 import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:task_management/common/widgets/width_spacer.dart';
 import 'package:task_management/common/widgets/xpansion_tiles.dart';
+import 'package:task_management/features/todo/controllers/todo/todo_provider.dart';
 import 'package:task_management/features/todo/controllers/xpension_provider.dart';
 import 'package:task_management/features/todo/pages/add.dart';
 import 'package:task_management/features/todo/widgets/todo_tiles.dart';
+
+import '../widgets/today_task.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
@@ -28,6 +32,7 @@ class _HomepageState extends ConsumerState<Homepage>
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(todoStateProvider.notifier).refresh();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -166,19 +171,9 @@ class _HomepageState extends ConsumerState<Homepage>
                         BorderRadius.all(Radius.circular(AppConst.kRadius)),
                     child: TabBarView(controller: tabController, children: [
                       Container(
-                        color: AppConst.kBkLight,
-                        height: AppConst.kHeight * 0.3,
-                        child: ListView(
-                          children: [
-                            TODOTile(
-                              start: "03:00",
-                              end: "04:00",
-                              switcher:
-                                  Switch(value: true, onChanged: (value) {}),
-                            )
-                          ],
-                        ),
-                      ),
+                          color: AppConst.kBkLight,
+                          height: AppConst.kHeight * 0.3,
+                          child: const TodayTask()),
                       Container(
                         color: AppConst.kBkLight,
                         height: AppConst.kHeight * 0.3,

@@ -16,7 +16,8 @@ class TODOTile extends StatelessWidget {
       this.start,
       this.end,
       this.editWidget,
-      this.delete, this.switcher});
+      this.delete,
+      this.switcher});
 
   final Color? color;
   final String? title;
@@ -53,9 +54,9 @@ class TODOTile extends StatelessWidget {
                               Radius.circular(AppConst.kRadius)),
                           color: color ?? AppConst.kRed),
                     ),
-                    WidthSpacer(h: 15),
+                    const WidthSpacer(h: 15),
                     Padding(
-                      padding: EdgeInsets.all(8.h),
+                      padding: EdgeInsets.all(4.h),
                       child: SizedBox(
                         width: AppConst.kWidth * 0.6,
                         child: Column(
@@ -89,7 +90,7 @@ class TODOTile extends StatelessWidget {
                                           style: appStyle(12, AppConst.kLight,
                                               FontWeight.normal))),
                                 ),
-                                WidthSpacer(h: 20),
+                                const WidthSpacer(h: 20),
                                 Row(
                                   children: [
                                     SizedBox(

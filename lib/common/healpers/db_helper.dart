@@ -3,12 +3,25 @@ import 'package:sqflite/sqflite.dart' as sql;
 import 'package:task_management/common/models/task_model.dart';
 
 class DbHelper {
+  // static Future<void> createTables(sql.Database database) async {
+  //   await database.execute("CREATE TABLE todos("
+  //       "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+  //       "title STRING, description STRING, date STRING, "
+  //       "startTime STRING, endTime STRING, "
+  //       "reminde INTEGER, repeat STRING, "
+  //       "isCompleted INTEGER)");
+
+  //   await database.execute("CREATE TABLE users("
+  //       "id INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 0, "
+  //       "isVerified INTEGER)");
+  // }
+  
   static Future<void> createTables(sql.Database database) async {
     await database.execute("CREATE TABLE todos("
         "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-        "title STRING, decs TEXT, date STRING, "
+        "title STRING, description STRING, date STRING, "
         "startTime STRING, endTime STRING, "
-        "remind INTEGER, repeat STRING, "
+        "reminde INTEGER, repeat STRING, "
         "isCompleted INTEGER)");
 
     await database.execute("CREATE TABLE users("
@@ -60,7 +73,7 @@ class DbHelper {
     final db = await DbHelper.db();
     final data = {
       'title': title,
-      'desc': desc,
+      'description': desc,
       'isCompleted': isCompleted,
       'date': date,
       'startTime': startTime,
