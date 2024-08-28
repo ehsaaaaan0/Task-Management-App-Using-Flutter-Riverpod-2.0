@@ -13,7 +13,9 @@ import 'package:task_management/common/widgets/xpansion_tiles.dart';
 import 'package:task_management/features/todo/controllers/todo/todo_provider.dart';
 import 'package:task_management/features/todo/controllers/xpension_provider.dart';
 import 'package:task_management/features/todo/pages/add.dart';
+import 'package:task_management/features/todo/widgets/day_after_tomorrow.dart';
 import 'package:task_management/features/todo/widgets/todo_tiles.dart';
+import 'package:task_management/features/todo/widgets/tomorrow_list.dart';
 
 import '../widgets/today_task.dart';
 
@@ -182,64 +184,9 @@ class _HomepageState extends ConsumerState<Homepage>
                   ),
                 ),
                 const HeightSpacer(hight: 20),
-                XPensionTiles(
-                    text: "Tomorrow's Task",
-                    text2: "Tomorrow's tasks are shown here",
-                    onExpansionChanged: (bool expanded) {
-                      ref
-                          .read(xpensionStateProvider.notifier)
-                          .setStart(!expanded);
-                    },
-                    trailing: Padding(
-                      padding: EdgeInsets.only(right: 12.w),
-                      child: ref.watch(xpensionStateProvider)
-                          ? const Icon(
-                              AntDesign.circledown,
-                              color: AppConst.kLight,
-                            )
-                          : const Icon(
-                              AntDesign.closecircleo,
-                              color: AppConst.kBlueLight,
-                            ),
-                    ),
-                    children: [
-                      TODOTile(
-                        start: "03:00",
-                        end: "04:00",
-                        switcher: Switch(value: true, onChanged: (value) {}),
-                      )
-                    ]),
+                const TomorrowList(),
                 const HeightSpacer(hight: 20),
-                XPensionTiles(
-                    text: DateTime.now()
-                        .add(const Duration(days: 2))
-                        .toString()
-                        .substring(5, 10),
-                    text2: "Tomorrow's tasks are shown here",
-                    onExpansionChanged: (bool expanded) {
-                      ref
-                          .read(xpensionState0Provider.notifier)
-                          .setStart(!expanded);
-                    },
-                    trailing: Padding(
-                      padding: EdgeInsets.only(right: 12.w),
-                      child: ref.watch(xpensionState0Provider)
-                          ? const Icon(
-                              AntDesign.circledown,
-                              color: AppConst.kLight,
-                            )
-                          : const Icon(
-                              AntDesign.closecircleo,
-                              color: AppConst.kBlueLight,
-                            ),
-                    ),
-                    children: [
-                      TODOTile(
-                        start: "03:00",
-                        end: "04:00",
-                        switcher: Switch(value: true, onChanged: (value) {}),
-                      )
-                    ]),
+                const DayAfterTomorrow(),
               ],
             ),
           ),
