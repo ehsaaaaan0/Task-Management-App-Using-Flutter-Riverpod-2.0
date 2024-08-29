@@ -17,7 +17,7 @@ class DayAfterTomorrow extends ConsumerWidget {
     final todo = ref.watch(todoStateProvider);
 
     var color = ref.read(todoStateProvider.notifier).getRandomColor();
-    String dayAfter = ref.read(todoStateProvider.notifier).getDayAfter();
+    String dayAfter = ref.read(todoStateProvider.notifier).getDayAfter(); 
     var dayafterTask =
         todo.where((element) => element.date!.contains(dayAfter));
     return XPensionTiles(
