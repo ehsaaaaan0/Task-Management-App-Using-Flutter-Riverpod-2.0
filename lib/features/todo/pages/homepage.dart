@@ -10,6 +10,7 @@ import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:task_management/common/widgets/width_spacer.dart';
 import 'package:task_management/features/todo/controllers/todo/todo_provider.dart';
 import 'package:task_management/features/todo/pages/add.dart';
+import 'package:task_management/features/todo/widgets/completed_task.dart';
 import 'package:task_management/features/todo/widgets/day_after_tomorrow.dart';
 import 'package:task_management/features/todo/widgets/tomorrow_list.dart';
 
@@ -175,6 +176,7 @@ class _HomepageState extends ConsumerState<Homepage>
                       Container(
                         color: AppConst.kBkLight,
                         height: AppConst.kHeight * 0.3,
+                        child: const CompletedTask(),
                       )
                     ]),
                   ),

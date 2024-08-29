@@ -38,7 +38,18 @@ class TodayTask extends ConsumerWidget {
               onTap: () {},
               child: const Icon(MaterialCommunityIcons.circle_edit_outline),
             ),
-            switcher: Switch(value: isCompleted, onChanged: (value) {}),
+            switcher: Switch(
+                value: isCompleted,
+                onChanged: (value) {
+                  ref.read(todoStateProvider.notifier).markAsCompleted(
+                      data.id ?? 0,
+                      data.title.toString(),
+                      data.description.toString(),
+                      1,
+                      data.date.toString(),
+                      data.startTime.toString(),
+                      data.endTime.toString());
+                }),
           );
         });
   }
