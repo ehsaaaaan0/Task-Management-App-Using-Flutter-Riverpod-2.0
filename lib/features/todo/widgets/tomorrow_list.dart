@@ -7,6 +7,7 @@ import 'package:task_management/features/todo/controllers/todo/todo_provider.dar
 import 'package:task_management/features/todo/controllers/xpension_provider.dart';
 
 import '../../../common/widgets/xpansion_tiles.dart';
+import '../pages/update_task.dart';
 import 'todo_tiles.dart';
 
 class TomorrowList extends ConsumerWidget {
@@ -15,7 +16,7 @@ class TomorrowList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final todo = ref.watch(todoStateProvider);
-    
+
     var color = ref.read(todoStateProvider.notifier).getRandomColor();
     String tomorrow = ref.read(todoStateProvider.notifier).getTomorrow();
     var tomorrowTask =
@@ -39,22 +40,30 @@ class TomorrowList extends ConsumerWidget {
                 ),
         ),
         children: [
-          for(final todo in tomorrowTask)
-          TODOTile(
-            title: todo.title,
-            description: todo.description,
-            color: color,
-            start: todo.startTime,
-            end: todo.endTime,
-             delete: () {
-              ref.read(todoStateProvider.notifier).deleteTodo(todo.id ?? 0);
-            },
-            editWidget: GestureDetector(
-              onTap: () {},
-              child: const Icon(MaterialCommunityIcons.circle_edit_outline),
-            ),
-            switcher: const SizedBox.shrink(),
-          )
+          for (final todo in tomorrowTask)
+            TODOTile(
+              title: todo.title,
+              description: todo.description,
+              color: color,
+              start: todo.startTime,
+              end: todo.endTime,
+              delete: () {
+                ref.read(todoStateProvider.notifier).deleteTodo(todo.id ?? 0);
+              },
+              editWidget: GestureDetector(
+                onTap: () {
+                  titles = todo.title.toString();
+                  descriptions = todo.description.toString();
+                  MaterialPageRoute(
+                    builder: (context) => UpdateTask(
+                      id: todo.id ?? 0,
+                    ),
+                  );
+                },
+                child: const Icon(MaterialCommunityIcons.circle_edit_outline),
+              ),
+              switcher: const SizedBox.shrink(),
+            )
         ]);
   }
 }

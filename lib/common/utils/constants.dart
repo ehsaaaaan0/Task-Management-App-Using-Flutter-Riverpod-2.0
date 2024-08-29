@@ -27,3 +27,6 @@ List<dynamic> colorr = const [
   Color(0xff667781),
   Color.fromARGB(255, 255, 0, 128),
 ];
+
+String titles= "";
+String descriptions = "";

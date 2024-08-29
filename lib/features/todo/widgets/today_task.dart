@@ -5,6 +5,9 @@ import 'package:task_management/common/models/task_model.dart';
 import 'package:task_management/features/todo/controllers/todo/todo_provider.dart';
 import 'package:task_management/features/todo/widgets/todo_tiles.dart';
 
+import '../../../common/utils/constants.dart';
+import '../pages/update_task.dart';
+
 class TodayTask extends ConsumerWidget {
   const TodayTask({
     super.key,
@@ -35,7 +38,13 @@ class TodayTask extends ConsumerWidget {
             end: data.endTime,
             color: color,
             editWidget: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                  titles = data.title.toString();
+                  descriptions = data.description.toString();
+                MaterialPageRoute(
+                  builder: (context) => UpdateTask(id: data.id??0,),
+                );
+              },
               child: const Icon(MaterialCommunityIcons.circle_edit_outline),
             ),
             switcher: Switch(
