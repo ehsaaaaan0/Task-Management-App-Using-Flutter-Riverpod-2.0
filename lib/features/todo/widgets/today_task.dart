@@ -39,10 +39,15 @@ class TodayTask extends ConsumerWidget {
             color: color,
             editWidget: GestureDetector(
               onTap: () {
-                  titles = data.title.toString();
-                  descriptions = data.description.toString();
-                MaterialPageRoute(
-                  builder: (context) => UpdateTask(id: data.id??0,),
+                titles = data.title.toString();
+                descriptions = data.description.toString();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UpdateTask(
+                      id: data.id ?? 0,
+                    ),
+                  ),
                 );
               },
               child: const Icon(MaterialCommunityIcons.circle_edit_outline),

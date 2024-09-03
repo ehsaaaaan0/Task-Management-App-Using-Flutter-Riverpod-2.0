@@ -54,9 +54,12 @@ class TomorrowList extends ConsumerWidget {
                 onTap: () {
                   titles = todo.title.toString();
                   descriptions = todo.description.toString();
-                  MaterialPageRoute(
-                    builder: (context) => UpdateTask(
-                      id: todo.id ?? 0,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UpdateTask(
+                        id: todo.id ?? 0,
+                      ),
                     ),
                   );
                 },

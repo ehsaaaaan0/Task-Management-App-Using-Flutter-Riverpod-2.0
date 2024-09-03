@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:task_management/common/models/task_model.dart';
 import 'package:task_management/common/utils/constants.dart';
 import 'package:task_management/common/widgets/appstyle.dart';
 import 'package:task_management/common/widgets/custom_outline_btn.dart';
@@ -123,7 +122,14 @@ class _AddTaskState extends ConsumerState<UpdateTask> {
                       scheduleDate.toString().isNotEmpty &&
                       startDate.toString().isNotEmpty &&
                       finishDate.toString().isNotEmpty) {
-                    ref.read(todoStateProvider.notifier).updateItem(widget.id, title.text, desc.text,0,scheduleDate, startDate.toString().substring(10, 16),finishDate.toString().substring(10, 16));
+                    ref.read(todoStateProvider.notifier).updateItem(
+                        widget.id,
+                        title.text,
+                        desc.text,
+                        0,
+                        scheduleDate,
+                        startDate.toString().substring(10, 16),
+                        finishDate.toString().substring(10, 16));
                     ref.read(finishTimeStateProvider.notifier).setEnd("");
                     ref.read(startTimeStateProvider.notifier).setStart("");
                     ref.read(dateStateProvider.notifier).setDate("");

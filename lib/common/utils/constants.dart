@@ -19,7 +19,7 @@ class AppConst {
   static double kRadius = 12.h;
 }
 
-List<dynamic> colorr = const [
+List<dynamic> colorr = const [                                                                                                                                                                                                                                                                                                                       
   Color(0xff2a2b2e),
   Color(0xffffffff),
   Color(0xffd80000),

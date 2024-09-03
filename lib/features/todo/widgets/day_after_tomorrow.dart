@@ -18,7 +18,7 @@ class DayAfterTomorrow extends ConsumerWidget {
     final todo = ref.watch(todoStateProvider);
 
     var color = ref.read(todoStateProvider.notifier).getRandomColor();
-    String dayAfter = ref.read(todoStateProvider.notifier).getDayAfter(); 
+    String dayAfter = ref.read(todoStateProvider.notifier).getDayAfter();
     var dayafterTask =
         todo.where((element) => element.date!.contains(dayAfter));
     return XPensionTiles(
@@ -55,10 +55,16 @@ class DayAfterTomorrow extends ConsumerWidget {
               },
               editWidget: GestureDetector(
                 onTap: () {
-                         titles = todo.title.toString();
+                  titles = todo.title.toString();
                   descriptions = todo.description.toString();
-                MaterialPageRoute(
-                  builder: (context) => UpdateTask(id: todo.id??0,));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UpdateTask(
+                        id: todo.id ?? 0,
+                      ),
+                    ),
+                  );
                 },
                 child: const Icon(MaterialCommunityIcons.circle_edit_outline),
               ),
